@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABT</title>
+    <link rel="icon" href="google.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.partner-box {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.partner-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.partner-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f3f4f6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: url('bandara.webp') no-repeat center center/cover;
+            filter: opacity(100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+        header h1.lateef-regular {
+        font-family: "Lateef", serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        .logo {
+            width: 40px;
+            height: auto;
+            margin-right: 1rem; /* Memberikan ruang antara logo dan teks */
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #0056b3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%; /* Posisi tetap di bawah header */
+    right: -200px; /* Menyembunyikan menu di luar layar ke kanan */
+    width: 200px;
+    z-index: 1000;
+    transform: translateY(0); /* Mengatur posisi awal tanpa efek vertical */
+    opacity: 0;
+    transition: opacity 0.5s, right 0.5s ease; /* Mengubah transformasi dan opacity */
+    border-radius: 0 0 0 10px;
+    pointer-events: none;
+}
+
+nav.active {
+    right: 0; /* Menu akan bergerak ke posisi semula dari kanan */
+    opacity: 1; /* Menu menjadi terlihat */
+    pointer-events: all; /* Mengaktifkan klik pada elemen di dalam menu */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    text-align: right;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+    opacity: 0;
+    transform: translateX(20px);
+    border-bottom: 2px solid transparent; /* Menambahkan border bawah */
+}
+
+nav a:hover {
+    background-color: rgba(0, 86, 179, 0.8); /* Efek hover latar belakang */
+    color: #ffd700; /* Mengubah warna teks saat hover */
+    border-color: white; /* Menambahkan garis bawah putih saat hover */
+}
+
+nav a:nth-child(1) {
+    animation: wipeIn 0.5s forwards 0.2s;
+}
+nav a:nth-child(2) {
+    animation: wipeIn 0.5s forwards 0.4s;
+}
+nav a:nth-child(3) {
+    animation: wipeIn 0.5s forwards 0.6s;
+}
+nav a:nth-child(4) {
+    animation: wipeIn 0.5s forwards 0.8s;
+}
+nav a:nth-child(5) {
+    animation: wipeIn 0.5s forwards 1s;
+}
+
+nav a:nth-child(1) {
+    animation: wipeIn 0.5s forwards 0.2s;
+}
+nav a:nth-child(2) {
+    animation: wipeIn 0.5s forwards 0.4s;
+}
+nav a:nth-child(3) {
+    animation: wipeIn 0.5s forwards 0.6s;
+}
+nav a:nth-child(4) {
+    animation: wipeIn 0.5s forwards 0.8s;
+}
+nav a:nth-child(5) {
+    animation: wipeIn 0.5s forwards 1s;
+}
+
+@keyframes wipeIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+        @keyframes wipeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        nav a.hide {
+            animation: wipeOut 0.5s forwards;
+        }
+        @keyframes wipeOut {
+            to {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+        section {
+            padding: 2rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        section:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section-title {
+            color: #0056b3;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .card {
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center; /* Untuk memastikan konten di tengah */
+}
+
+.card-image {
+    width: 100%;
+    max-height: 200px; /* Sesuaikan agar tidak terlalu besar */
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 85px; /* Opsional: sudut gambar membulat */
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://your-logo-url.com/logo.png" alt="Logo Sekolah Penerbangan" class="logo">
+        <h1>Aviasi Bhaskara Tama</h1>
+        <button class="menu-toggle" onclick="toggleMenu(event)" aria-expanded="false">☰</button>
+        <nav id="menu">
+            <a href="#about">Tentang Kami</a>
+            <a href="#programs">Program Kami</a>
+            <a href="#legal">Sumber Hukum</a>
+            <a href="#partners">Partner Kami</a>
+            <a href="#contact">Kontak Kami</a>
+        </nav>
+    </header>
+    <section id="about">
+        <h2 class="section-title">Tentang Kami</h2>
+        <div class="card">
+            <p>Sekolah Penerbangan kami didedikasikan untuk melatih para calon pilot, teknisi penerbangan, dan profesional di dunia aviasi dengan standar internasional.</p>
+        </div>
+    </section>
+    <section id="programs">
+        <h2 class="section-title">Program Kami</h2>
+        <div class="card">
+            <img src="image.png" alt="Airlines Staff" class="card-image">
+            <p class="card-title"><strong>AIRLINES STAFF</strong></p>
+            <p>
+                Airlines Staff adalah staff maskapai
+                penerbangan yang bertugas di darat untuk
+                melayani penumpang, mereka bertanggung
+                jawab untuk memastikan kelancaran dan
+                kenyamanan penumpang sebelum dan
+                sesudah menaiki pesawat.
+            </p>
+        </div>
+    </section>
+                </div>
+        </div>
+    </section>
+            </div>
+        <div class="card">
+            <p><strong>Teknisi Penerbangan:</strong> Pelatihan untuk menjadi teknisi pesawat bersertifikasi.</p>
+        </div>
+        <div class="card">
+            <p><strong>Manajemen Aviasi:</strong> Kursus untuk memahami operasional dan manajemen bandara.</p>
+        </div>
+    </section>
+    <section id="legal">
+        <h2 class="section-title">Sumber Hukum</h2>
+        <div class="card">
+            <p>Program kami sesuai dengan regulasi internasional yang ditetapkan oleh ICAO, FAA, dan Otoritas Penerbangan Indonesia.</p>
+        </div>
+    </section>
+    <section id="partners">
+        <h2 class="section-title">Partner Kami</h2>
+        <div class="partners-grid">
+            <div class="partner-box">
+                <img src="garuda indonesia.png" alt="Partner 1">
+                <p>Partner 1</p>
+            </div>
+            <div class="partner-box">
+                <img src="lion.png" alt="Partner 2">
+                <p>Partner 2</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner3.jpg" alt="Partner 3">
+                <p>Partner 3</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner4.jpg" alt="Partner 4">
+                <p>Partner 4</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner5.jpg" alt="Partner 5">
+                <p>Partner 5</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner6.jpg" alt="Partner 6">
+                <p>Partner 6</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner7.jpg" alt="Partner 7">
+                <p>Partner 7</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner8.jpg" alt="Partner 8">
+                <p>Partner 8</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner9.jpg" alt="Partner 9">
+                <p>Partner 9</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner10.jpg" alt="Partner 10">
+                <p>Partner 10</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner11.jpg" alt="Partner 11">
+                <p>Partner 11</p>
+            </div>
+            <div class="partner-box">
+                <img src="partner12.jpg" alt="Partner 12">
+                <p>Partner 12</p>
+            </div>
+        </div>
+    </section>
+        </section>
+    <section id="contact">
+        <h2 class="section-title">Kontak Kami</h2>
+        <div class="card">
+            <p><strong>Email:</strong> agunggangbuntet@GB.com</p>
+            <p><strong>Telepon:</strong> contone ngene pokok</p>
+            <p><strong>Alamat:</strong> Warung jayeng loss broo</p>
+        </div>
+    </section>
+    <footer>
+    </footer>
+
+    <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        function toggleMenu(event) {
+            event.stopPropagation();
+            const isActive = menu.classList.toggle('active');
+            if (isActive) {
+                document.querySelectorAll('nav a').forEach((link, index) => {
+                    link.classList.remove('hide');
+                    link.style.animationDelay = `${(index + 1) * 0.2}s`; // Delay berurutan
+                });
+            } else {
+                document.querySelectorAll('nav a').forEach((link) => {
+                    link.classList.add('hide');
+                });
+            }
+        }
+
+        document.body.addEventListener('click', function() {
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                document.querySelectorAll('nav a').forEach((link) => {
+                    link.classList.add('hide');
+                });
+            }
+        });
+
+        menu.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
